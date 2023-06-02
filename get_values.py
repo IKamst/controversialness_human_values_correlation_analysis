@@ -12,10 +12,9 @@ import torch
 # Get the human values from text data using a trained DeBERTa model.
 def get_values(loaded_data):
 
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') # TODO fix if using GPU!
+    device = torch.device('cuda' if torch.cuda.is_available() else 'gpu') # TODO currently GPU
 
-    model = torch.load("models/best_model.pt",
-                       map_location=torch.device('cpu'))  # TODO remove 'map_location' if using GPU!
+    model = torch.load("models/best_model.pt")  # TODO currently GPU
 
     model.eval()
 
@@ -26,6 +25,8 @@ def get_values(loaded_data):
     with torch.no_grad():
         for batch in loaded_data:
             input_ids_batch, input_mask_batch = batch
+
+            print(input_ids_batch[0].shape)
 
             # Forward pass
             eval_output = model(input_ids=input_ids_batch, token_type_ids=None,
