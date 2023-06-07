@@ -1,8 +1,5 @@
 import csv
 
-import numpy as np
-
-
 def get_results_lists(data, predictions):
     controversy_pred_list = []
     for index, prediction in enumerate(predictions):

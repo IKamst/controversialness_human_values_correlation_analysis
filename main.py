@@ -4,7 +4,6 @@ from get_results import get_results
 
 import torch
 
-
 if __name__ == '__main__':
     torch.set_default_device('cuda')  # TODO currently using GPU
     data, data_loader = read_data()

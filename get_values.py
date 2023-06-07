@@ -1,20 +1,11 @@
-###
-# get_values.py
-# LTP Task 2
-#
-# Gets the human values from text data using a trained DeBERTa model.
-###
-
-# Import packages:
 import numpy as np
 import torch
 
-# Get the human values from text data using a trained DeBERTa model.
 def get_values(loaded_data):
 
-    device = torch.device('cuda' if torch.cuda.is_available() else 'gpu') # TODO currently GPU
+    device = torch.device('cuda' if torch.cuda.is_available() else 'gpu')
 
-    model = torch.load("models/best_model.pt")  # TODO currently GPU
+    model = torch.load("models/best_model.pt")
 
     model.eval()
 

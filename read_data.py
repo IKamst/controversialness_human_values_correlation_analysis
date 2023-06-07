@@ -1,17 +1,15 @@
 import csv
-import os
 
-import numpy as np
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 from transformers import AutoTokenizer
 
 def get_data_from_csv():
-    path = "data/data_2016.csv" # TODO need to set this!
+    path = "data/data_2016.csv"
     with open(path, newline='', encoding='utf-8') as csvfile:
         data = list(csv.reader(csvfile, delimiter=";"))
 
-    return data[:100000] # TODO need to set this!
+    return data[:400000]
 
 def read_data():
     data = get_data_from_csv()
@@ -43,7 +41,7 @@ def preprocess_data(data_texts):
                                            padding='max_length',
                                            truncation=True,
                                            return_attention_mask=True,
-                                           is_split_into_words=True)  # Max length to check
+                                           is_split_into_words=True)
 
     input_id = torch.tensor(encoding['input_ids'])
 
