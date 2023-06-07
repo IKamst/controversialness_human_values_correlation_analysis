@@ -30,8 +30,8 @@ controversialness_human_values_correlation_analysis
 
 The `\data` folder contains the .csv files containing the Reddit comments posted in various years (needs to be added by the user). The data is loaded as a tensor for PyTorch in `read_data.py`.
 
-The `\models` folder contains the .pt PyTorch models that are generated after finetuning DeBERTa during training. The model saved is the best ones (i.e. the model configuration where F1 score for the validation set was maximal for the training set).
+The `\models` folder contains a .pt PyTorch model that is used to detect the human values (needs to be added by the user).
 
-The `\results` folder contains a list `complete_results` which has information for each comment (e.g. the author, time, text), the comment's controversialness score (taken from Reddit) and the comment's human values (determined by the model). The `controversy_pred_results.pt` contains only a comment's controversialness score and the comment's human values. 
+The `\results` folder contains a list `complete_results` which has information for each comment (e.g. the author, time, text), the comment's controversialness score (taken from Reddit) and the comment's human values (determined by the model). The `controversy_pred_results.pt` contains only a comment's controversialness score and the comment's human values. These are the results that the read_data.py produces.
 
 
