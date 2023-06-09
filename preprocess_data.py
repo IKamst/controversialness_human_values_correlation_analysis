@@ -1,59 +1,59 @@
 import pandas as pd
-import csv
  
+ # Write list to csv according to year
+def write_csv(new_data):
+    if new_data['created_utc'] > 1483225200:
+        filename = "data_2017.csv"
+    elif new_data['created_utc'] > 1451602800:
+        filename = "data_2016.csv"
+    elif new_data['created_utc'] > 1420076400:
+        filename = "data_2015.csv"
+    elif new_data['created_utc'] > 1388449200:
+        filename = "data_2014.csv"
+    elif new_data['created_utc'] > 1356914400:
+        filename = "data_2013.csv"
+    elif new_data['created_utc'] > 1325287200:
+        filename = "data_2012.csv"
+    elif new_data['created_utc'] > 1293760800:
+        filename = "data_2011.csv"
+    elif new_data['created_utc'] > 1262233200:
+        filename = "data_2010.csv"
+    elif new_data['created_utc'] > 1230606000:
+        filename = "data_2009.csv"
+    elif new_data['created_utc'] > 1199071200:
+        filename = "data_2008.csv"
+    elif new_data['created_utc'] > 1167543600:
+        filename = "data_2007.csv"
 
+    pd.DataFrame(new_data, index=[0]).to_csv(filename, sep=';', mode='a', header=False, index=False)
 
-
+# Read comments recursively
 def read_comments(comments):
 
     for idx_2, comment in enumerate(comments):
         global total_comments, controversial_comments
         total_comments += 1
-        item = {'text': "", 'ups': 0, 'downs': 0, 'score': 0, 'level': 0, 'controversy': 0, 'controversiality': 0, 'created_utc': 0, 'author': ''}
-        # print(f"Comment index {idx_1}-{idx_2}: {comment}")
+        item = {'id': "", 'text': "", 'controversiality': 0, 'created_utc': 0, 'author': ''}
+
+        if 'id' in comment:
+            item['id'] = comment['id']
         if 'body' in comment:
             item['text'] = comment['body']
-            # print(f"Body of comment: {comment['body']}")
-        if 'ups' in comment:
-            item['ups'] = comment['ups']
-            # print(f"Ups in comment: {comment['ups']}")
-        if 'downs' in comment:
-            item['downs'] = comment['downs']
-            # print(f"Downs in comment: {comment['downs']}")
-        # print("\n\n\n")
-        
-        if item['ups'] > 0 and item['downs'] > 0:
-            if item['ups'] > item['downs']:
-                item['controversy'] = item['downs'] / item['ups']
-            else:
-                item['controversy'] = item['ups'] / item['downs']
         
         if 'controversiality' in comment:
             item['controversiality'] = comment['controversiality']
             controversial_comments += comment['controversiality']
-            # print(f"Controversiality in comment: {comment['controversiality']}")
-
-        if 'score' in comment:
-            item['score'] = comment['score']
-            # print(f"Score in comment: {comment['score']}")
 
         if 'created_utc' in comment:
-            item['created_utc'] = comment['created_utc']
-            # print(f"Created_utc in comment: {comment['created_utc']}")
+            item['created_utc'] = int(comment['created_utc'])
 
         if 'author' in comment:
             item['author'] = comment['author']
-            # print(f"Author in comment: {comment['author']}")
 
-        if 'level' in comment:
-            item['level'] = comment['level']
-            # print(f"Level in comment: {comment['level']}")
-
-        pd.DataFrame(item, index=[0]).to_csv('data.csv', sep=';', mode='a', header=False, index=False)
+        write_csv(item)
 
         if 'children' in comment:
             read_comments(comment['children'])
-            # print(f"Children in comment: {comment['children']}")
             
 
 def read_post(post):
@@ -65,8 +65,9 @@ def read_post(post):
 total_comments = 0
 controversial_comments = 0
 
+# Chunkwise read jsonl file
 data = pd.read_json('threads.jsonl', orient="records", lines=True, chunksize=1000)
-# print(data.shape)
+
 for idx, post in enumerate(data):
     print(idx)
     read_post(post)
