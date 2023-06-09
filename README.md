@@ -23,12 +23,13 @@ controversialness_human_values_correlation_analysis
 │   ├──results
 │   │   ├── complete_results
 │   │   └── controversy_pred_results
-├── get_values.py
-├── get_results.py
+├── main.py
+├── perform_results_analysis.py
+├── preprocess_data.py
 ├── read_data.py
+├── read_results.py
 ├── requirements.txt
-├── run_model.py
-└── main.py
+└── train.sh
 ```
 
 The `\data` folder contains the .csv files containing the Reddit comments posted in various years (needs to be added by the user). The data is loaded as a tensor for PyTorch in `read_data.py`.
