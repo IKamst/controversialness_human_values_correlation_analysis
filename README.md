@@ -7,8 +7,8 @@ This project has been tested using Python 3.9. The results were gathered using a
 The results can be gathered by running `main.py`. The `best_model.pt` (a DeBERTa v3 model with a learning rate of 5e-5 and a patience of 11) is used to find the human values. This model can be added in the `models` folder. Datafiles of lists of comments per year is obtained by running the script of `preprocess_data.py` on the r/ChangeMyView dataset and should be added in the `data` folder.
 
 ## Results analysis
-To perform an analysis of the results in `results/complete_results.csv` (not included in this repo due to size), run `perform_results_analysis.py`. This will compute the Jaccard's distance between the values, generate a wordcloud of controversial and non controversial comments, and fit a logistic regression.
-
+To perform an analysis of the results in `results/complete_results.csv` (not included in this repo due to size), run `perform_results_analysis.py`. This will compute the Jaccard's distance between the values, generate a wordcloud of controversial and non controversial comments, and fit a logistic regression. 
+To obtain barplots of the instances of controversiality present in the dataset per value as well as percentages of these, run `plot_results_final.py`. This will generate barplots which will be stored in `\plots`.
 # Directory Structure
 
 This project is structured as follows:
@@ -19,6 +19,8 @@ controversialness_human_values_correlation_analysis
 │   │   └── ...
 │   ├──models
 │   │   ├── best_model.pt
+│   ├──plots
+│   │   ├── plot1_400_filtered_final.png
 │   │   └── ...
 │   ├──results
 │   │   ├── complete_results
