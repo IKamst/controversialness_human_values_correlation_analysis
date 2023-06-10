@@ -53,4 +53,4 @@ The `\models` folder contains a .pt PyTorch model that is used to detect the hum
 
 The `\results` folder contains a list `complete_results` which has information for each comment (e.g. the author, time, text), the comment's controversialness score (taken from Reddit) and the comment's human values (determined by the model). The `controversy_pred_results` contains only a comment's controversialness score and the comment's human values. These are the results that the read_data.py produces.
 
-`train.sh` can be used to run model testing on Habrok.
+`train.sh` can be used to run model testing on Habrok. Copy all the code, including data and model to a folder on Habrok. Then run `$ sbatch train.sh` (might be nessesary to run `$ dos2unix train.sh` to convert script to unix format)
