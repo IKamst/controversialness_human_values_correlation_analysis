@@ -10,7 +10,7 @@ setting up a virtual environment).
 
 The `best_model.pt` (a DeBERTa v3 model with a learning rate of 5e-5 and a patience of 11) is used to find the human values and can be downloaded from [here](https://drive.google.com/file/d/1wbznu605vpJtr3YErOkl27cynj95XMpX/view?usp=drive_link) with a RuG gmail account. This model should be added in the `models/` folder. 
 
-For the dataset, download `threads.json.bz2` from [here](https://zenodo.org/record/3778298) and place the extracted `threads.json` file in the main directory. Datafiles of lists of comments per year is obtained by running the script of `preprocess_data.py` on the r/ChangeMyView dataset and should be added in the `data/` folder.
+For the dataset, download `threads.jsonl.bz2` from [here](https://zenodo.org/record/3778298) and place the extracted `threads.jsonl` file in the main directory. Datafiles of lists of comments per year is obtained by running the script of `preprocess_data.py` on the r/ChangeMyView dataset and should be added in the `data/` folder.
 
 To run results analysis, download the complete results from [here](https://drive.google.com/file/d/1W-LQODa3AQUf-WvZTkrt70zhjeGcojXo/view?usp=drive_link) with your RuG gmail account and place it in `results/`.
 
