@@ -4,7 +4,6 @@ This project attempts to find the correlation between the controversialness and 
 # Usage
 This project has been tested using Python 3.9. The results were gathered using a GPU. 
 
-<<<<<<< HEAD
 ## Pre-requisites
 Install the requirements in `requirements.txt` using `pip install -r requirements.txt` in your terminal (we recommend 
 setting up a virtual environment). 
@@ -17,9 +16,7 @@ To run results analysis, download the complete results from [here](https://drive
 
 ## Launch
 The results can be gathered by running `main.py`. 
-=======
-The results can be gathered by running `main.py`. The `best_model.pt` (a DeBERTa v3 model with a learning rate of 5e-5 and a patience of 11) is used to find the human values. This model can be added in the `models` folder. Datafiles of lists of comments per year is obtained by running the script of `preprocess_data.py` on the r/ChangeMyView dataset and should be added in the `data` folder. Pip install the requirements.txt file. You can use train.sh to run it on Habrok.
->>>>>>> 29ac970f70e137251b2bcd146dfff113143ab6b9
+
 
 ## Results analysis
 To perform an analysis of the results in `results/complete_results.csv` (not included in this repo due to size), run `perform_results_analysis.py`. This will compute the Jaccard's distance between the values, generate a wordcloud of controversial and non controversial comments, and fit a logistic regression. 
